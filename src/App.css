@@ -1,0 +1,52 @@
+ 
+
+
+
+#drum-machine {
+  background-color: var(--color-secundario);
+  width: 70vw;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  
+}
+/* drum pad */
+#drumPadBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  padding: 2rem;
+}
+
+.drum-pad {
+  display: inline-block;
+  padding: 30px 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-primario);
+  color: var(--texto-color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.drum-pad:active,
+.drum-pad:hover {
+  background-color: var(--color-terciario);
+}
+
+/* funcionalidades de la app */
+ 
+#display {
+  background-color: var(--color-primario);
+  color: var(--texto-color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
+ 
+}
+
