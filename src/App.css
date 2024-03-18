@@ -32,8 +32,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.drum-pad:active,
-.drum-pad:hover {
+.drum-pad:active {
   background-color: var(--color-terciario);
 }
 
