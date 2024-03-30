@@ -2,85 +2,70 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { useEffect, useState } from "react";
+import DrumPadBox from "./components/drumPadBox";
+import { useState } from "react";
 
 import "./App.css";
 
 function App() {
   //states
-  const [rangeValue, setRangeValue] = useState(50);
-  const [displayContent, setDisplayContent] = useState("");
-  const [powerChecked, setPowerChecked] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  const [displayContent, setDisplayContent] = useState("hola");
+  const [powerValue, setPowerValue] = useState(false);
   const [bankChecked, setBankChecked] = useState(false);
   
-  //audios
-  const audioKits = [[],[]];
+ // Función para actualizar el estado del display en el componente padre
+ const updateDisplayState = (newValue) => {
+  setDisplayContent(newValue);
+};
 
   //Change Handling Functions
-  const handlePowerButton = (event) => {
-    setPowerChecked(!powerChecked);
-    console.log(!powerChecked);
+  const togglePower = () => {
+    setPowerValue(!powerValue);
+    console.log(!powerValue);
   }
 
-  const handleBankButton = (event) => {
+  const handleBankButton = () => {
     setBankChecked(!bankChecked);
     console.log(!bankChecked);
   }
 
-  const handleRangeChange = (event) => {
-    setRangeValue(event.target.value);
-    setDisplayContent(` volumen : ${event.target.value}`);
+  const handleVolumeChange = (event) => {
+    const newVolume = parseFloat(event.target.value); 
+    setVolume(newVolume);
+    updateDisplayState(`volumen : ${parseInt(volume * 100)}`);
+    
+    setTimeout(() => {
+      setDisplayContent('');
+    }, 4000);
   }
+
+ 
  
   
-  const handleDrumPadChange = (event) => {
-    console.log('Se hizo clic en el botón', event.target.textContent);
-    document.getElementById(event.target.textContent).play(); 
-   }
+ 
 
   return (
     <Container className="d-flex min-vh-100 flex-column align-items-center justify-content-center ">
       <Row><h1>Drum Machine</h1></Row>
       <Row id="drum-machine" md={2} className="">
-        <Col id="drumPadBox" md={6} className="">
-        <button className="drum-pad " onClick={handleDrumPadChange}>
-         <audio src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" className="clip" id="Q"></audio>Q
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-        <audio src="" className="clip" id="W"></audio>W
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="E"></audio>E
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="A"></audio>A
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="S"></audio>S
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="D"></audio>D
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="Z"></audio>Z
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="X"></audio>X
-        </button>
-        <button className="drum-pad" onClick={handleDrumPadChange}>
-          <audio src="" className="clip" id="C"></audio>C
-        </button>
+        <Col  md={6} className="">
+          <DrumPadBox 
+            bankChecked={bankChecked}  
+            updateDisplayState = {updateDisplayState} 
+            volume = {volume}
+            powerValue = {powerValue}/>
         </Col>
 
         <Col md={6} className="fw-bold d-flex flex-column justify-content-center" >
-          <div  id="display" className="p-4 mb-4">{displayContent}</div>
+          <div  id="display" className="mb-4">{displayContent}</div>
           <Form className="d-flex flex-column justify-content-center">
             <Form.Check 
               type="switch"
               id="powerButton"
               label="Power"
-              checked= {powerChecked}
-              onChange={handlePowerButton}
+              checked= {powerValue}
+              onChange={togglePower}
               
               
             />
@@ -89,10 +74,11 @@ function App() {
               type="range"
               className="form-range"
               min="0"
-              max="100"
+              max="1"
+              step="0.01" 
               id="customRange"
-              value={rangeValue}
-              onChange={handleRangeChange}
+              value={volume}
+              onChange={handleVolumeChange}
             ></input>
             
             </label>
@@ -113,6 +99,7 @@ function App() {
     </Container>
   );
 }
+
 
 export default App;
 

@@ -39,13 +39,17 @@
 /* funcionalidades de la app */
  
 #display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-primario);
   color: var(--texto-color);
-  text-align: center;
   text-decoration: none;
   font-size: 1.3rem;
   border: none;
   border-radius: 5px;
- 
+  width: 100%;
+  height: 3rem;
+  
 }
 
