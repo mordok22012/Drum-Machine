@@ -22,7 +22,6 @@ function App() {
   //Change Handling Functions
   const togglePower = () => {
     setPowerValue(!powerValue);
-    console.log(!powerValue);
   }
 
   const handleBankButton = () => {
