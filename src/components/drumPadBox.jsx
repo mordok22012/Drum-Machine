@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 
 const AudioComponent = ({bankChecked, updateDisplayState, volume, powerValue}) => {
 
@@ -38,45 +38,44 @@ const AudioComponent = ({bankChecked, updateDisplayState, volume, powerValue}) =
   
   //audio id
   const audioIdList = ['Q','W','E','A','S','D','Z','X','C'];
-
+  
  //handle drumPad change
-  const handleDrumPadChange = (audioSrc, buttonId) => {
-    const audio = new Audio(audioSrc);
-    if (powerValue) {
+  const handleDrumPadChange = (event) => {
+    let valor;
+    if (event.type === 'keydown') {
+        valor = event.key.toUpperCase();
+    } else {
+        valor = event.target.textContent;
+    }
+
+    const audioIndex = audioIdList.indexOf(valor);
+
+    if (powerValue && audioIndex !== -1) {
+      const audio = document.getElementById(valor);
+      const btnId = audio.parentNode.id;
       audio.volume = volume;
+      audio.currentTime = 0;
       audio.play();
-      updateDisplayState(buttonId);
+      updateDisplayState(btnId);
     }
     
-    
-   }
-//Function to play audio from keyboard
-   const handleKeyPress =  (event) => {
-    const audioIndex = audioIdList.indexOf(event.key.toUpperCase());
-    if (audioIndex !== -1) {
-      const audioSrc = bankChecked ? firstAudioList[audioIndex] : secondAudioList[audioIndex];
-      const buttonId = bankChecked ? buttonAudioIdFirstList[audioIndex] : buttonAudioIdSecondList[audioIndex];
-      
-      if (audioSrc) {
-        handleDrumPadChange(audioSrc, buttonId);
-      }
-       
-    } 
    }
 
    useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('keydown', handleDrumPadChange);
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', handleDrumPadChange);
     }
 
    } ,[bankChecked, volume, powerValue]);
 
+   
+
    //render buttons
    const renderButtons = (audioList, buttonIDs) => {
     return audioList.map((audioSrc, index) => (
-      <button key={index} className="drum-pad" id={buttonIDs[index]} onClick={() => handleDrumPadChange(audioSrc, buttonIDs[index])}>
-        <audio className="clip" id={audioIdList[index]} src={audioSrc}  type="audio/mp3" />
+      <button key={index} className="drum-pad" id={buttonIDs[index]} onClick={(event) => handleDrumPadChange(event)}>
+        <audio  className="clip" id={audioIdList[index]} src={audioSrc}  type="audio/mp3" />
         {audioIdList[index]}
       </button>
     ));

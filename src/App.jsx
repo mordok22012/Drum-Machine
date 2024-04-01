@@ -9,9 +9,9 @@ import "./App.css";
 
 function App() {
   //states
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.3);
   const [displayContent, setDisplayContent] = useState("hola");
-  const [powerValue, setPowerValue] = useState(false);
+  const [powerValue, setPowerValue] = useState(true);
   const [bankChecked, setBankChecked] = useState(false);
   
  // Función para actualizar el estado del display en el componente padre
@@ -26,7 +26,7 @@ function App() {
 
   const handleBankButton = () => {
     setBankChecked(!bankChecked);
-    console.log(!bankChecked);
+    
   }
 
   const handleVolumeChange = (event) => {
@@ -36,13 +36,9 @@ function App() {
     
     setTimeout(() => {
       setDisplayContent('');
+   
     }, 4000);
   }
-
- 
- 
-  
- 
 
   return (
     <Container className="d-flex min-vh-100 flex-column align-items-center justify-content-center ">
