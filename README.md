@@ -1,29 +1,37 @@
- ### requerimientos de la app
-  1. un contenedor que englobe la app con la id "drum-machine".
-  2. Un elemento con la id "display" que muestre los cambios de estado en la app.
-  3. Dentro de "drum-machine" debe haber 9 drum pad en los cuales se pueda hacer click.
-     Cada uno con un nombre de clase de "drum-pad".
-     Un ID único que describe el clip de audio que se configurará para activar el drum pad.
-     Un texto interno que corresponde a una de las siguientes teclas en el teclado Q, W, E, A, S, D, Z, X, C los drum pad deben ser en este orden.
-  4. Dentro de cada ".drum-pad" debe haber Un  elemento HTML5 de audio con:
-        un atributo src apuntando a un clip de audio. 
-        Un nombre de clase de "clip". 
-        Un id  correspondiente al texto interno de su elemento padre ".drum-pad" (e.g. id="Q", id="W", id="E" etc.).
-  5. Cuando haga click en un elemento ".drum-pad" el clip de audio contenido en su elemento hijo "audio" debe ser gatillado.
+ # Drum Machine
 
-  6. Cuando yo presiono la tecla gatillo asociada con cada ".drum-pad" el clip de audio contenido en cada elemento "audio" debe ser gatillado.
-  (e.g. pressing the Q key should trigger the drum pad which contains the string Q, pressing the W key should trigger the drum pad which contains the string W, etc.).
+## Descripción
+Este proyecto es una aplicación web simple que genera citas famosas aleatorias y permite compartirlas como un tweet.
 
-  7.  cuando un ".drum-pad" es gatillado, un string describiendo el clip de audio asociado es mostrado como el texto interno del elemento "#display" (each string must be unique).
+## Tecnologías Utilizadas
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+- React
+- Git
+
+## Instalación y Uso
+1. Clona el repositorio: `git clone https://github.com/mordok22012/RandomQuoteMachine`
+2. Abre el archivo `index.html` en tu navegador web.
+3. Aprieta el boton `Power` para encender o apagar the Drum Machine.
+4. Aprieta el boton `Bank`  para canbiar entre sonidos.
+5. Puedes manejar los los pad de sonidos haciendo click sobre ellos, como tambien desde el teclado. 
+
+ ## Estructura de Archivos
+- `index.html`: Archivo principal HTML.
+- `index.css`: Archivo de estilos CSS principal.
+- `index.css`: Archivo de estilos CSS del componente App.
+- `main.jsx`: Archivo React principal.
+- `App.jsx`: Archivo React del componente App.
+- `.gitignore`: Archivo de configuración de Git.
+- `README.md`: Documentación del proyecto.
 
 
-### paleta de colores
-celadon : #B9D8C2 
-light blue : #9AC2C9
-cadet gray : #8AA1B1
-ebony : #4A5043
-sunglow : #FFCB47
+## Contacto
+- Correo Electrónico: yoelagustindorta@gmail.com
+- Twitter: @Djoelagustin
 
-### Ideas para mejorar 
-1. poner un titulo arriba de la app.
-1. un marco copado.
+
+## Estado del Proyecto
+Este proyecto está  finalizado.
