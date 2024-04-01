@@ -1,7 +1,7 @@
  # Drum Machine
 
 ## Descripción
-Este proyecto es una aplicación web simple que genera citas famosas aleatorias y permite compartirlas como un tweet.
+Este Proyecto es una aplicacion web simple que reproduce sonidos de bateria y piano en funcion de la tecla que presiones.
 
 ## Tecnologías Utilizadas
 - HTML
